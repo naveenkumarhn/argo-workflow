@@ -13,5 +13,5 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: localhost:5000/my-webapp:v1
+          image: naveenkumar003/my-webapp:v1
   replicas: 1
