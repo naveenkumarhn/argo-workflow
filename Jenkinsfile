@@ -6,7 +6,6 @@ pipeline {
 
   agent {
     kubernetes {
-	label 'KUBECONFIG'
       yamlFile 'builder.yaml'
     }
   }
