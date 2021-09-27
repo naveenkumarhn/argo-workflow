@@ -45,10 +45,11 @@ spec:
       }
      stage("Deployment") {
           steps {
-                git branch: 'main', url: 'https://github.com/naveenkumarhn/Jenkins.git'
+                sshagent(credentials: ["github-ssh-key"]) {
+                git branch: 'main',credentialsId: 'github-ssh-key', url: 'git@github.com:naveenkumarhn/Jenkins.git'
                sh '''
                   git config --global user.email "nkumar1805@yahoo.in"
-                  git config --global user.name naveenkumar003
+                  git config --global user.name naveenkumarhn
                   sed -i "s/myweb:.*/myweb:${BUILD_NUMBER}/g" myweb.yaml
                   git commit -am "${BUILD_NUMBER}"
                   ls
