@@ -1,11 +1,37 @@
 pipeline {
 
-  agent {
+   agent {
     kubernetes {
-      yamlFile 'builder.yaml'
-    }
-  }
-
+        yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaniko
+spec:
+  containers:
+  - name: kubectl
+    image: joshendriks/alpine-k8s
+    command:
+    - /bin/cat
+    tty: true    
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:debug
+    command:
+    - /busybox/cat
+    tty: true
+    volumeMounts:
+      - name: kaniko-secret
+        mountPath: /kaniko/.docker
+  volumes:
+    - name: kaniko-secret
+      secret:
+        secretName: regcred
+        items:
+          - key: .dockerconfigjson
+            path: config.json
+ """
+   }
+     }
   stages {
 
     stage('Kaniko Build & Push Image') {
