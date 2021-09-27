@@ -12,6 +12,6 @@ spec:
         name: my-webapp
     spec:
       containers:
-        - name: webapp
+        - name: my-web
           image: naveenkumar003/my-webapp:v1
-  replicas: 3
+  replicas: 1
