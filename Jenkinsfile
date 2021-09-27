@@ -36,7 +36,7 @@ spec:
                      sh '''
                      /kaniko/executor --dockerfile `pwd`/Dockerfile \
                                       --context `pwd` \
-                                      --destination=naveenkumar003/myapp:${BUILD_NUMBER}
+                                      --destination=naveenkumar003/myweb:${BUILD_NUMBER}
                         '''
                   }
                }
@@ -49,7 +49,7 @@ spec:
                sh '''
                   git config --global user.email "nkumar1805@yahoo.in"
                   git config --global user.name naveenkumarhn
-                  sed -i "s/alpine-webserver:.*/webapp:${BUILD_NUMBER}/g" deployment/deployment.yaml
+                  sed -i "s/<TAG>/${BUILD_NUMBER}/" myweb.yaml
                   git commit -am "${BUILD_NUMBER}"
                   ls
                   git push --force origin master
