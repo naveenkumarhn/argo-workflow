@@ -19,7 +19,7 @@ pipeline {
             sh '''
             /kaniko/executor --dockerfile `pwd`/Dockerfile \
                              --context `pwd` \
-                             --destination=naveenkumarhn/myweb:${BUILD_NUMBER}
+                             --destination=naveenkumar003/myweb:${BUILD_NUMBER}
             '''
           }
         }
