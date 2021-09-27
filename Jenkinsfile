@@ -45,18 +45,19 @@ spec:
       }
      stage("Deployment") {
           steps {
-                sshagent(credentials: ["github-ssh-key"]) {
-                git branch: 'main',credentialsId: 'github-ssh-key', url: 'git@github.com:naveenkumarhn/Jenkins.git'
+             sshagent(credentials: ["github-ssh"]) {
+                git branch: 'main',credentialsId: 'github-ssh', url: 'git@github.com:naveenkumarhn/Jenkins.git'
+                
                sh '''
                   git config --global user.email "nkumar1805@yahoo.in"
-                  git config --global user.name naveenkumarhn
-                  sed -i "s/myweb:.*/myweb:${BUILD_NUMBER}/g" myweb.yaml
+                  git config --global user.name NarayanPooja
+                  sed -i "s/myweb:.*/myweb:${BUILD_NUMBER}/g" myweb.yml
                   git commit -am "${BUILD_NUMBER}"
                   ls
                   git push --force origin master
                  '''
-        }  
+        } 
+          }
        }
      }
- }
-}   
+}
