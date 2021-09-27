@@ -5,13 +5,13 @@ metadata:
 spec:
   selector:
     matchLabels:
-      name: my-webapp
+      name: my-web
   template:
     metadata:
       labels:
-        name: my-webapp
+        name: my-web
     spec:
       containers:
-        - name: webapp
-          image: naveenkumar003/my-webapp:v1
-  replicas: 3
+        - name: my-web
+          image: naveenkumar003/my-web:v1
+  replicas: 1
