@@ -11,9 +11,5 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: argocd-server
+          serviceName: service
           servicePort: http
-  tls:
-  - hosts:
-    - internal.path.to.argocd.io
-    secretName: your-certificate-name
