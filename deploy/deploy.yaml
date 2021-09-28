@@ -14,4 +14,4 @@ spec:
       containers:
         - name: webapp
           image: naveenkumar003/my-webapp:v1
-  replicas: 2
+  replicas: 1
