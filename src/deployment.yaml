@@ -15,7 +15,7 @@ spec:
         app: webapp
     spec:
       containers:
-      - image: naveenkumar003/webapp:v1
+      - image: naveenkumar003/my-webapp:v1
         imagePullPolicy: Always
         name: webapp
 
