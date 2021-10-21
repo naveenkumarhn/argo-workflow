@@ -27,4 +27,4 @@ spec:
   selector:
     app: rollouts-demo
     # This selector will be updated with the pod-template-hash of the stable ReplicaSet. e.g.:
-    # rollouts-pod-template-hash: 789746c88d
+    # rollouts-pod-template-hash:789746c88d

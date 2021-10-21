@@ -1,1 +1,1 @@
-This is Argo Rollout Project
+This is Argo Rollout Project.
