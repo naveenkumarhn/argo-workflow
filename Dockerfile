@@ -1,10 +1,13 @@
-FROM klakegg/hugo:0.78.2-alpine AS build
-RUN apk add -U git
-COPY . /src
-RUN make init
-RUN make build
+FROM ubuntu
 
-FROM nginx:1.19.4-alpine
-RUN mv /usr/share/nginx/html/index.html /usr/share/nginx/html/old-index.html
-COPY --from=build /src/public /usr/share/nginx/html
+RUN apt-get update
+
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
+
+RUN apt-get update && apt-get -y install apache2
+
+COPY ./webpage/ /var/www/html
+
 EXPOSE 80
+
+CMD ["apache2ctl","-D","FOREGROUND"]
